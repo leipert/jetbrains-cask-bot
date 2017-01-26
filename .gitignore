@@ -1,0 +1,8 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+node_modules
+yarn-error.log
+
+env.sh

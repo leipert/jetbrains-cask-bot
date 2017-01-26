@@ -19,7 +19,28 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 ## Watched jetbrains products
 
 <!-- JETBRAINS -->
-
+-   appcode
+-   clion
+-   datagrip
+-   intellij-idea
+-   jetbrains-toolbox
+-   mps
+-   phpstorm
+-   pycharm
+-   rubymine
+-   webstorm
 <!-- JETBRAINS END -->
 
 ## Usage
+
+Pre-requisites:
+
+-   node, yarn, git, brew, brew-casl
+-   add a remote named "jcb" with your fork
+-   copy `cp env.example.sh env.sh` and fill the file in
+
+Then simply run:
+
+```bash
+./jetbrains-cask-bot.sh
+```

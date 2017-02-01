@@ -1,11 +1,13 @@
 #!/bin/bash
 
+set -e
+
 caskroom_dir=$1
 cask=$2
 branch=$3
 version=$4
 
-cd "${caskroom_dir}" || exit 1
+cd "${caskroom_dir}"
 brew cask style --fix "${cask}"
 brew cask audit --download "${cask}"
 git checkout -b "${branch}" --quiet

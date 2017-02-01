@@ -2,4 +2,4 @@
 - [x] `brew cask style --fix {{cask_file}}` reports no offenses.
 - [x] The commit message includes the cask’s name and version.
 
-This PR has been semi-automatically with the [jetbrains-cask-bot](https://github.com/leipert/jetbrains-cask-bot)
+This PR has been created semi-automatically with the [jetbrains-cask-bot](https://github.com/leipert/jetbrains-cask-bot)

@@ -23,12 +23,16 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 -   clion
 -   datagrip
 -   intellij-idea
+-   intellij-idea-ce
 -   jetbrains-toolbox
 -   mps
 -   phpstorm
 -   pycharm
+-   pycharm-ce
+-   pycharm-edu
 -   rubymine
 -   webstorm
+-   youtrack-workflow
 <!-- JETBRAINS END -->
 
 ## Usage

@@ -35,7 +35,7 @@ const definitions = [
   {
     caskName: 'youtrack-workflow',
     jetbrainsCode: 'YTWE',
-    versionField: '<%= build %>fix'
+    versionField: '<%= build %>'
   }
 ];
 

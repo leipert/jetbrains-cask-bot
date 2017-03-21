@@ -1,7 +1,23 @@
 #!/bin/bash
 
-. ./env.sh
+# we save the current dir to go back to it later
+CURR_DIR="$(pwd)"
 
-brew update
+# we want to now where the project root is and switch to it
+__DIRNAME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "${__DIRNAME}"
+
+# install dependencies
 yarn
-node ./lib/index.js
+
+# update brew to not create PRs for outdated formulas
+brew update
+
+# read environment variables which contain git/github settings
+. "./env.sh"
+
+# run the script
+node "./lib/index.js"
+
+# go back to previous dir
+cd "${CURR_DIR}"

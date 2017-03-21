@@ -10,7 +10,7 @@
     "bluebird": "^3.4.7",
     "child-process-promise": "^2.2.0",
     "fs-extra": "^2.0.0",
-    "github": "^8.1.1",
+    "github": "^9.2.0",
     "lodash": "^4.17.4",
     "superagent": "^3.3.2"
   },

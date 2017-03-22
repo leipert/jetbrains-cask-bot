@@ -14,5 +14,18 @@
     "lodash": "^4.17.4",
     "superagent": "^3.3.2"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "husky": "^0.13.2",
+    "lint-staged": "^3.4.0"
+  },
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "./niceup.sh",
+      "git add"
+    ]
+  }
 }

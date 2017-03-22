@@ -5,7 +5,7 @@ CURR_DIR="$(pwd)"
 
 # we want to now where the project root is and switch to it
 __DIRNAME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "${__DIRNAME}"
+cd "${__DIRNAME}" || exit 1
 
 # install dependencies
 yarn
@@ -20,4 +20,4 @@ brew update
 node "./lib/index.js"
 
 # go back to previous dir
-cd "${CURR_DIR}"
+cd "${CURR_DIR}" || exit 1

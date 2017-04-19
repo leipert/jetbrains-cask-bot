@@ -5,7 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Added
+- Support for `eap` release channel
+- gogland@eap
+
+### Changed
+- update `prettier`
+- updated dependencies
 
 ## [1.1.1] 2017-03-28
 ### Fixed

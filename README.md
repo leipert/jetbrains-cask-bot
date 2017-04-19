@@ -22,6 +22,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 -   appcode
 -   clion
 -   datagrip
+-   gogland (eap channel)
 -   intellij-idea
 -   intellij-idea-ce
 -   jetbrains-toolbox

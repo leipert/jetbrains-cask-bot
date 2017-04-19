@@ -18,10 +18,11 @@
   "devDependencies": {
     "husky": "^0.13.2",
     "lint-staged": "^3.4.0",
-    "prettier": "^0.22.0"
+    "prettier": "^1.2.1"
   },
   "scripts": {
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --tab-width 4 --write '{lib,assets}/*.js'"
   },
   "lint-staged": {
     "*.js": [

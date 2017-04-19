@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - update `prettier`
 - updated dependencies
+- better summary output message
 
 ## [1.1.1] 2017-03-28
 ### Fixed

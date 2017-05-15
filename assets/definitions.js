@@ -20,7 +20,7 @@ const definitions = [
     {
         caskName: 'gogland',
         jetbrainsCode: 'GO',
-        versionField: '<%= version %>,<%= build %>',
+        versionField: '<%= version %> EAP,<%= build %>',
         releaseChannel: 'eap',
     },
     {

@@ -72,6 +72,12 @@ const definitions = [
         releaseChannel: 'release',
     },
     {
+        caskName: 'rider',
+        jetbrainsCode: 'RD',
+        versionField: '<%= version %>,<%= build %>',
+        releaseChannel: 'eap',
+    },
+    {
         caskName: 'rubymine',
         jetbrainsCode: 'RM',
         versionField: '<%= version %>,<%= build %>',

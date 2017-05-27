@@ -31,6 +31,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 -   pycharm
 -   pycharm-ce
 -   pycharm-edu
+-   rider (eap channel)
 -   rubymine
 -   webstorm
 -   youtrack-workflow

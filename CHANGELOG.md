@@ -5,9 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Added
+- rider@eap
 
 ## [1.2.1] 2017-05-15
+### Fixed
 - Change gogland version string
 
 ## [1.2.0] 2017-04-19

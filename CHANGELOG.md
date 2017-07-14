@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.1] 2017-07-14
+### Changed
+- Temporary fix of rider version to 2017.1
+
 ## [1.3.0] 2017-05-27
 
 ### Added

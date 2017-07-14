@@ -74,7 +74,8 @@ const definitions = [
     {
         caskName: 'rider',
         jetbrainsCode: 'RD',
-        versionField: '<%= version %>,<%= build %>',
+        //        versionField: '<%= version %>,<%= build %>',
+        versionField: '2017.1,<%= build %>',
         releaseChannel: 'eap',
     },
     {

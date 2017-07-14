@@ -16,9 +16,9 @@
   },
   "private": true,
   "devDependencies": {
-    "husky": "^0.13.2",
-    "lint-staged": "^3.4.0",
-    "prettier": "^1.2.1"
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.1",
+    "prettier": "^1.5.2"
   },
   "scripts": {
     "precommit": "lint-staged",

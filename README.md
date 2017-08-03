@@ -8,7 +8,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 2.  retrieve list of latest releases from jetbrains
 3.  compare list of latest releases to current versions in [homebrew-cask](https://github.com/caskroom/homebrew-cask)
 4.  check if there are open pull requests which touch the outdated casks
-    
+
     For any outdated cask which has no open PR:
     1. update version and sha256
     2. `brew cask style --fix "${cask}"`
@@ -31,7 +31,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 -   pycharm
 -   pycharm-ce
 -   pycharm-edu
--   rider (eap channel)
+-   rider
 -   rubymine
 -   webstorm
 -   youtrack-workflow
@@ -41,7 +41,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 
 Pre-requisites:
 
--   node, yarn, git, brew, brew-casl
+-   node, yarn, git, brew, brew-cask
 -   add a remote named "jcb" with your fork
 -   copy `cp env.example.sh env.sh` and fill the file in
 

@@ -5,7 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Changed
+- Improved performance by caching away a lot of things
+    - mtimes of Casks are cached, so that we do just reload data from the Casks, if needbe
+    - Missing Casks are cached for three days
+    - Jetbrains API is cached for a few minutes
+
+### Fixed
+- Better error handling when something fails while patching a cask
 
 ## [1.4.0] 2017-08-04
 ### Changed

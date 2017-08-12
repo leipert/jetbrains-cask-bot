@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Use the unofficial bash strict mode: http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail; export FS=$'\n\t'
 
 # we save the current dir to go back to it later
 CURR_DIR="$(pwd)"

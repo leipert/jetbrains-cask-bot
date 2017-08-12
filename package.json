@@ -1,6 +1,6 @@
 {
   "name": "jetbrains-cask-bot",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A bot to create PRs for homebrew cask for jetbrains products",
   "main": "index.js",
   "repository": "https://github.com/leipert/jetbrains-cask-bot.git",
@@ -8,11 +8,14 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.7",
+    "cache-service": "^1.3.8",
+    "cache-service-file-cache": "^1.0.0",
     "child-process-promise": "^2.2.0",
     "fs-extra": "^2.0.0",
     "github": "^9.2.0",
     "lodash": "^4.17.4",
-    "superagent": "^3.3.2"
+    "superagent": "^3.3.2",
+    "superagent-cache-plugin": "^2.0.0"
   },
   "private": true,
   "devDependencies": {

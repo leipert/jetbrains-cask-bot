@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Added
+- Check if app name in Cask matches app name in downloaded dmg.
 
 ## [1.5.2] 2017-08-17
 

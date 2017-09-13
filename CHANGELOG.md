@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.6.0] 2017-09-13
+
+### Added
+- Check if app name in Cask matches app name in downloaded dmg.
+
 ## [1.5.2] 2017-08-17
 
 ### Fixed

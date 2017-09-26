@@ -5,12 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Fixed
+- Usage of FileCache plugin
 
 ## [1.7.0] 2017-09-26
 
 ### Changed
--Updated dependencies
+- Updated dependencies
 
 ## [1.6.1] 2017-09-17
 

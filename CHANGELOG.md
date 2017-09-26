@@ -3,10 +3,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.7.1] 2017-09-26
+
+### Fixed
+- Usage of FileCache plugin
+
 ## [1.7.0] 2017-09-26
 
 ### Changed
--Updated dependencies
+- Updated dependencies
 
 ## [1.6.1] 2017-09-17
 

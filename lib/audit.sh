@@ -13,7 +13,7 @@ brew cask audit --download "${cask}"
 location=$(brew cask audit --download "${cask}" | grep -oe '/Users.*.dmg')
 
 # get the appname (funnily it is sorrounded by brackets !?)
-appname=$(brew cask _stanza app "${cask}" | sed 's/\[\["//' | sed 's/"\]\]//')
+appname=$(brew cask info "${cask}" | grep "(App)" | grep -oE ".+\.app")
 
 echo "Checking if cask ${cask} contains an app named '${appname}' (${location})"
 

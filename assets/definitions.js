@@ -18,7 +18,7 @@ const definitions = [
         releaseChannel: 'release',
     },
     {
-        caskName: 'gogland',
+        caskName: 'goland',
         jetbrainsCode: 'GO',
         versionField: '<%= version %> EAP,<%= build %>',
         releaseChannel: 'eap',

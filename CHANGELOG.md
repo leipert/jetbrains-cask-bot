@@ -3,10 +3,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.0] 2017-11-03
+
+### Changed
+- renamed gogland to goland
+
 ## [1.8.0] 2017-10-09
 
 ### Fixed
-- audit.sh script. An recent HC broke it
+- audit.sh script. An recent HC update broke it
 
 ## [1.7.1] 2017-09-26
 

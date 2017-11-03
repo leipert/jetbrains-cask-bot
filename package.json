@@ -1,6 +1,6 @@
 {
   "name": "jetbrains-cask-bot",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "A bot to create PRs for homebrew cask for jetbrains products",
   "main": "index.js",
   "repository": "https://github.com/leipert/jetbrains-cask-bot.git",

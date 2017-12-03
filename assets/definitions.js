@@ -20,8 +20,8 @@ const definitions = [
     {
         caskName: 'goland',
         jetbrainsCode: 'GO',
-        versionField: '<%= version %> EAP,<%= build %>',
-        releaseChannel: 'eap',
+        versionField: '<%= version %>,<%= build %>',
+        releaseChannel: 'release',
     },
     {
         caskName: 'intellij-idea',

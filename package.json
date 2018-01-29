@@ -11,17 +11,17 @@
     "cache-service": "^1.3.8",
     "cache-service-file-cache": "^1.0.1",
     "child-process-promise": "^2.2.0",
-    "fs-extra": "^4.0.1",
-    "github": "^9.2.0",
+    "fs-extra": "^5.0.0",
+    "github": "^13.1.0",
     "lodash": "^4.17.4",
-    "superagent": "^3.3.2",
+    "superagent": "^3.8.2",
     "superagent-cache-plugin": "^2.0.0"
   },
   "private": true,
   "devDependencies": {
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.3",
-    "prettier": "^1.5.3"
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2"
   },
   "scripts": {
     "precommit": "lint-staged",

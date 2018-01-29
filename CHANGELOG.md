@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.11.0] 2018-01-29
+
+### Changed
+- Updated dependencies
+
 ## [1.10.0] 2017-12-03
 
 ### Changed

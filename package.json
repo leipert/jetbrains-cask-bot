@@ -20,17 +20,11 @@
   "private": true,
   "devDependencies": {
     "husky": "^0.14.3",
-    "lint-staged": "^6.1.0",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "pretty-quick": "^1.4.1"
   },
   "scripts": {
-    "precommit": "lint-staged",
-    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --tab-width 4 --write '{lib,assets}/*.js'"
-  },
-  "lint-staged": {
-    "*.js": [
-      "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --tab-width 4 --write",
-      "git add"
-    ]
+    "precommit": "pretty-quick",
+    "lint": "pretty-quick"
   }
 }

@@ -13,6 +13,7 @@ echo "Auditing cask ${cask}"
 bash "${DIR}/audit.sh" "${cask}"
 echo "Creating branch for ${cask}"
 cd "${caskroom_dir}"
+git branch -D "${branch}" || echo "Branch ${branch} does not exist"
 git checkout -b "${branch}" --quiet
 git commit "${cask}.rb" --message "${message}" --quiet
 git push --force jcb "${branch}" --quiet

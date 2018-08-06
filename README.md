@@ -37,19 +37,19 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 -   rubymine
 -   webstorm
 -   youtrack-workflow
-    <!-- JETBRAINS END -->
+
+<!-- JETBRAINS END -->
 
 ## Usage
 
 Pre-requisites:
 
--   node, yarn, git, brew, brew-cask
--   add a remote named "jcb" with your fork to the homebrew cask tap: (`e.g. /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask`)
--   Unshallow fetch of the master: `git fetch --unshallow origin`
+-   node, yarn, git
+-   brew with tap brew-cask
 -   copy `cp env.example.sh env.sh` and fill the file in
 
 Then simply run:
 
 ```bash
-./jetbrains-cask-bot.sh
+bash ./jetbrains-cask-bot.sh
 ```

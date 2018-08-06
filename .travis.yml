@@ -1,28 +1,23 @@
-language: node_js
-
 sudo: true
-
-matrix:
-  include:
-  - os: osx
-    osx_image: xcode9.4
-    rvm: system
-  fast_finish: true
+os: osx
+osx_image: xcode9.4
+rvm: system
 
 install:
-- |
-  # Force strict error checking.
-  set -o errexit
-  set -o pipefail
-- |
-  # Mirror the repo as a tap.
-  brew tap homebrew/cask
-- |
-  # Switch to master branch.
-  export HOMEBREW_COLOR=1
-  export HOMEBREW_DEVELOPER=1
-  export HOMEBREW_NO_AUTO_UPDATE=1
-  brew update
+    - |
+        # Force strict error checking.
+        set -o errexit
+        set -o pipefail
+    - |
+        # Mirror the repo as a tap.
+        brew tap homebrew/cask
+    - |
+        # Switch to master branch.
+        export HOMEBREW_COLOR=1
+        export HOMEBREW_DEVELOPER=1
+        export HOMEBREW_NO_AUTO_UPDATE=1
+        brew update
+    - brew install yarn
 
 script:
     - yarn

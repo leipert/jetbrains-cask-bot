@@ -17,8 +17,7 @@ install:
         export HOMEBREW_DEVELOPER=1
         export HOMEBREW_NO_AUTO_UPDATE=1
         brew update
-    - brew install yarn
+    - brew install yarn git
 
 script:
-    - yarn
-    - ./jetbrains-cask-bot.sh
+    - bash ./jetbrains-cask-bot.sh

@@ -10,15 +10,17 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 4.  check if there are open pull requests which touch the outdated casks
 
     For any outdated cask which has no open PR:
-    1. update version and sha256
-    2. `brew cask style --fix "${cask}"`
-    3. `brew cask audit --download "${cask}"`
-    4. create and commit branch
-    5. create PR
+
+    1.  update version and sha256
+    2.  `brew cask style --fix "${cask}"`
+    3.  `brew cask audit --download "${cask}"`
+    4.  create and commit branch
+    5.  create PR
 
 ## Watched jetbrains products
 
 <!-- JETBRAINS -->
+
 -   appcode
 -   clion
 -   datagrip
@@ -35,7 +37,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 -   rubymine
 -   webstorm
 -   youtrack-workflow
-<!-- JETBRAINS END -->
+    <!-- JETBRAINS END -->
 
 ## Usage
 

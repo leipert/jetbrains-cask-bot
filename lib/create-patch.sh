@@ -15,6 +15,9 @@ echo "Creating branch for ${cask}"
 cd "${caskroom_dir}"
 git branch -D "${branch}" || echo "Branch ${branch} does not exist"
 git checkout -b "${branch}" --quiet
+echo "Creating commit"
 git commit "${cask}.rb" --no-gpg-sign --message "${message}" --quiet
+echo "Pushing to remote"
 git push --force jcb "${branch}" --quiet
+echo "Checking out master"
 git checkout master

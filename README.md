@@ -44,7 +44,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 
 Pre-requisites:
 
--   node, yarn, git
+-   node, yarn, git, p7zip
 -   brew with tap brew-cask
 -   copy `cp env.example.sh env.sh` and fill the file in
 

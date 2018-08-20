@@ -1,0 +1,10 @@
+image: node:10-alpine
+
+trigger_travis:
+  stage: build
+  script:
+    - yarn
+    - node ./lib/diff.js
+  artifacts:
+    paths:
+      - previous.json

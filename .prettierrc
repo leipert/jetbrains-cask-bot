@@ -1,8 +1,5 @@
 # .prettierrc
 trailingComma: es5
-tabWidth: 4
+tabWidth: 2
+printWidth: 100
 singleQuote: true
-overrides:
-- files: "*.json"
-  options:
-    tabWidth: 2

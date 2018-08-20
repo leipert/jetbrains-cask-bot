@@ -21,22 +21,22 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 
 <!-- JETBRAINS -->
 
--   appcode
--   clion
--   datagrip
--   goland
--   intellij-idea
--   intellij-idea-ce
--   jetbrains-toolbox
--   mps
--   phpstorm
--   pycharm
--   pycharm-ce
--   pycharm-edu
--   rider
--   rubymine
--   webstorm
--   youtrack-workflow
+- appcode
+- clion
+- datagrip
+- goland
+- intellij-idea
+- intellij-idea-ce
+- jetbrains-toolbox
+- mps
+- phpstorm
+- pycharm
+- pycharm-ce
+- pycharm-edu
+- rider
+- rubymine
+- webstorm
+- youtrack-workflow
 
 <!-- JETBRAINS END -->
 
@@ -44,9 +44,9 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 
 Pre-requisites:
 
--   node, yarn, git, p7zip
--   brew with tap brew-cask
--   copy `cp env.example.sh env.sh` and fill the file in
+- node, yarn, git, p7zip
+- brew with tap brew-cask
+- copy `cp env.example.sh env.sh` and fill the file in
 
 Then simply run:
 

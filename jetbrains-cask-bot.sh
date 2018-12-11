@@ -39,7 +39,7 @@ git fetch jcb
 for product in $(git branch -r | grep jcb_ | cut -d_ -f 2 | sort -ur); do
     echo "Removing outdated branches for ${product}"
     git branch -r | \
-    ggrep "jcb_${product}_" | \
+    grep "jcb_${product}_" | \
     ghead -n -1 | \
     gcut -d/ -f 2 | \
     gxargs --no-run-if-empty git push jcb --delete

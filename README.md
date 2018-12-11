@@ -46,7 +46,7 @@ This algorithm is runs on [Travis CI][travis]. Builds are triggered via [GitLab 
 
 Pre-requisites:
 
-- node, yarn, git, p7zip, coreutils
+- node, yarn, git, p7zip, coreutils, findutils
 - brew with tap brew-cask
 - copy `cp env.example.sh env.sh` and fill the file in
 

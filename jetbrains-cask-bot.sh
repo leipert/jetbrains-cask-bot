@@ -37,8 +37,8 @@ git remote add jcb \
 # Removing old branches (only keep latest branch)
 git fetch jcb
 for product in $(git branch -r | grep jcb_ | cut -d_ -f 2 | sort -ur); do
-    echo "Removing outdated branches for $product"
-    git branch -r | grep "$product" | head -n -1 | cut -d/ -f 2 | xargs git push jcb --delete
+    echo "Removing outdated branches for ${product}"
+    git branch -r | grep "jcb_${product}_" | head -n -1 | cut -d/ -f 2 | xargs --no-run-if-empty git push jcb --delete
 done
 
 # Switch to project root

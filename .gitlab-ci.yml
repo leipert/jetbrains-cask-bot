@@ -4,7 +4,7 @@ trigger_travis:
   stage: build
   script:
     - yarn
-    - node ./lib/diff.js
+    - node ./lib/has-update.js
   artifacts:
     paths:
       - previous.json

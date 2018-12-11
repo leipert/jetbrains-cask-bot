@@ -46,7 +46,7 @@ cd "${__DIRNAME}" || exit 1
 
 # run the script
 echo -e "\\nRunning script\\n"
-node "./lib/index.js"
+node "./lib/update-casks.js"
 
 # Delete remote as it contains the API token
 cd "${CASK_DIR}"

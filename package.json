@@ -2,7 +2,6 @@
   "name": "jetbrains-cask-bot",
   "version": "1.11.2",
   "description": "A bot to create PRs for homebrew cask for jetbrains products",
-  "main": "index.js",
   "repository": "https://github.com/leipert/jetbrains-cask-bot.git",
   "author": "Lukas Eipert <git@leipert.io>",
   "license": "MIT",

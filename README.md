@@ -1,12 +1,12 @@
 # jetbrains-cask-bot
 
-This is a small tool which helps creating pull requests for [casks](https://github.com/caskroom/homebrew-cask) of jetbrains products.
+This is a small tool which helps creating pull requests for [casks][casks] of jetbrains products.
 
 ## "Algorithm"
 
 1.  brew update (which updates all the casks)
 2.  retrieve list of latest releases from jetbrains
-3.  compare list of latest releases to current versions in [homebrew-cask](https://github.com/caskroom/homebrew-cask)
+3.  compare list of latest releases to current versions in [homebrew-cask][casks]
 4.  check if there are open pull requests which touch the outdated casks
 
     For any outdated cask which has no open PR:
@@ -16,6 +16,8 @@ This is a small tool which helps creating pull requests for [casks](https://gith
     3.  `brew cask audit --download "${cask}"`
     4.  create and commit branch
     5.  create PR
+
+This algorithm is runs on [Travis CI][travis]. Builds are triggered via [GitLab CI][gitlabci], as it allows scheduling more frequently.
 
 ## Watched jetbrains products
 
@@ -44,7 +46,7 @@ This is a small tool which helps creating pull requests for [casks](https://gith
 
 Pre-requisites:
 
-- node, yarn, git, p7zip
+- node, yarn, git, p7zip, coreutils
 - brew with tap brew-cask
 - copy `cp env.example.sh env.sh` and fill the file in
 
@@ -53,3 +55,7 @@ Then simply run:
 ```bash
 bash ./jetbrains-cask-bot.sh
 ```
+
+[casks]: https://github.com/caskroom/homebrew-cask
+[travis]: https://travis-ci.org/leipert/jetbrains-cask-bot/builds
+[gitlabci]: https://gitlab.com/leipert-projects/jetbrains-cask-bot/pipeline_schedules

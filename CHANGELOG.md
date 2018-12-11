@@ -4,9 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [2.0.0] 2018-12-11
 
-TODO: add at least one Added, Changed, Deprecated, Removed, Fixed or Security section
+### Added
+
+- Automate execution completely:
+  - Every hour a small check on GitLab CI is executed.
+    If a new version of a jetbrains product has been released, we trigger a script on Travis CI.
+  - Travis CI updates the cask and creates the PRs if necessary
+- Detection for jetbrains products which have no cask
+
+### Removed
+
+- Unnecessary caching due to complete automation
+
+### Changed
+
+- Updated prettier and related config
+- Updated all dependencies
 
 ## [1.11.1] 2018-03-02
 

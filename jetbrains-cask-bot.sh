@@ -34,12 +34,23 @@ git remote add jcb \
     "https://${JCB_GITHUB_API_TOKEN}@github.com/${JCB_SOURCE_FORK_OWNER}/${JCB_TARGET_REPO}.git" > /dev/null 2>&1 \
     && echo "Added jcb remote"
 
+# Removing old branches (only keep latest branch)
+git fetch jcb
+for product in $(git branch -r | grep jcb_ | cut -d_ -f 2 | sort -ur); do
+    echo "Removing outdated branches for ${product}"
+    git branch -r | \
+    grep "jcb_${product}_" | \
+    ghead -n -1 | \
+    gcut -d/ -f 2 | \
+    gxargs --no-run-if-empty git push jcb --delete
+done
+
 # Switch to project root
 cd "${__DIRNAME}" || exit 1
 
 # run the script
 echo -e "\\nRunning script\\n"
-node "./lib/index.js"
+node "./lib/update-casks.js"
 
 # Delete remote as it contains the API token
 cd "${CASK_DIR}"

@@ -20,12 +20,16 @@
   },
   "private": true,
   "devDependencies": {
-    "husky": "^0.14.3",
-    "prettier": "^1.14.0",
-    "pretty-quick": "^1.4.1"
+    "husky": "^1.2.0",
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.8.0"
   },
   "scripts": {
-    "precommit": "node lib/update-readme.js && pretty-quick",
     "lint": "pretty-quick"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "node lib/update-readme.js && pretty-quick"
+    }
   }
 }

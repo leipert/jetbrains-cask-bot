@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1] 2019-01-09
+
+### Fixed
+
+- Build on Travis CI should work again
+
 ## [2.0.0] 2018-12-11
 
 ### Added

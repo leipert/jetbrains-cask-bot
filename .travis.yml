@@ -1,6 +1,6 @@
 sudo: true
 os: osx
-osx_image: xcode10
+osx_image: xcode10.1
 rvm: system
 
 install:
@@ -9,16 +9,15 @@ install:
     set -o errexit
     set -o pipefail
   - |
-    # Mirror the repo as a tap.
-    brew tap homebrew/cask
-  - |
     # Switch to master branch.
     export HOMEBREW_COLOR=1
     export HOMEBREW_DEVELOPER=1
     export HOMEBREW_NO_AUTO_UPDATE=1
     brew update
-  - brew install git || brew upgrade git || echo "git already installed"
-  - brew install coreutils findutils p7zip yarn
+    # Mirror the repo as a tap.
+    brew tap homebrew/cask
+    brew install git || brew upgrade git || echo "git already installed"
+    brew install coreutils findutils p7zip yarn
 
 script:
   - bash ./jetbrains-cask-bot.sh

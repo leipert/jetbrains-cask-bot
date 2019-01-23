@@ -1,6 +1,6 @@
 {
   "name": "jetbrains-cask-bot",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A bot to create PRs for homebrew cask for jetbrains products",
   "repository": "https://github.com/leipert/jetbrains-cask-bot.git",
   "author": "Lukas Eipert <git@leipert.io>",

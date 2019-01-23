@@ -13,11 +13,12 @@ install:
     export HOMEBREW_COLOR=1
     export HOMEBREW_DEVELOPER=1
     export HOMEBREW_NO_AUTO_UPDATE=1
-    brew update
+    brew update > /dev/null
     # Mirror the repo as a tap.
     brew tap homebrew/cask
-    brew install git || brew upgrade git || echo "git already installed"
-    brew install coreutils findutils p7zip yarn
+    for formula in git coreutils findutils p7zip yarn; do
+      brew install "$formula" || echo "$formula already installed"
+    done
 
 script:
   - bash ./jetbrains-cask-bot.sh

@@ -38,7 +38,7 @@ const definitions = [
   {
     caskName: 'jetbrains-toolbox',
     jetbrainsCode: 'TBA',
-    versionField: '<%= version %>.<%= build %>',
+    versionField: '<%= build %>',
     releaseChannel: 'release',
   },
   {

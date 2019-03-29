@@ -26,7 +26,7 @@ const definitions = [
   {
     caskName: 'intellij-idea',
     jetbrainsCode: 'IIU',
-    versionField: '<%= version %>,<%= build %>',
+    versionField: '<%= version %>',
     releaseChannel: 'release',
   },
   {

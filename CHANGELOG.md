@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.0] 2019-09-03
+
+### Changed
+
+- Update dependencies
+- Cache Ruby dependencies
+
+### Fixed
+
+- Automatically update of URLs
+
 ## [2.0.4] 2019-02-16
 
 ### Fixed

@@ -9,7 +9,7 @@ brew cask style --fix "${cask}"
 echo "Check checksum of ${cask}"
 brew cask audit --download "${cask}"
 
-# find out where to the dmg is downloaded, it is prompted if i run audit twice
+# find out where to the dmg is downloaded, it is prompted if I run audit twice
 location=$(brew cask audit --download "${cask}" | grep -oe '/Users.*.dmg')
 
 # get the appname (funnily it is sorrounded by brackets !?)

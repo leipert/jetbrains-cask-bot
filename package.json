@@ -6,25 +6,27 @@
   "author": "Lukas Eipert <git@leipert.io>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "^16.2.0",
-    "bluebird": "^3.4.7",
+    "@octokit/rest": "^16.28.8",
+    "bluebird": "^3.5.5",
+    "chalk": "^2.4.2",
     "child-process-promise": "^2.2.0",
-    "fs-extra": "^7.0.0",
-    "lodash": "^4.17.5",
-    "superagent": "^4.0.0"
+    "fs-extra": "^8.1.0",
+    "lodash": "^4.17.15",
+    "superagent": "^5.1.0"
   },
   "private": true,
   "devDependencies": {
-    "husky": "^1.2.0",
-    "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0"
+    "husky": "^3.0.5",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1"
   },
   "scripts": {
+    "generate-readme": "node lib/update-readme.js && prettier README.md --write",
     "lint": "pretty-quick"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "node lib/update-readme.js && pretty-quick"
+      "pre-commit": "yarn generate-readme && pretty-quick --staged"
     }
   }
 }

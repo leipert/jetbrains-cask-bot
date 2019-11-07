@@ -5,28 +5,39 @@ on: [push]
 #    - cron: '13 * * * *'
 
 jobs:
-  build:
-    runs-on: macOS-10.14
-    env:
-      HOMEBREW_COLOR: 1
-      HOMEBREW_DEVELOPER: 1
-      HOMEBREW_NO_AUTO_UPDATE: 1
-      HOMEBREW_NO_INSTALL_CLEANUP: 1
+  check:
+    runs-on: [linux]
     steps:
     - uses: actions/checkout@v1
-    - name: Install homebrew
-      shell: bash
+    - uses: actions/setup-node@v1.1.0
+    - id: checkIfUpdateIsNeeded
+      name: Check if update is needed
       run: |
-        set -o errexit
-        set -o pipefail
-        echo "HOMEBREW_NO_AUTO_UPDATE: $HOMEBREW_NO_AUTO_UPDATE"
-        echo "HOMEBREW_NO_INSTALL_CLEANUP: $HOMEBREW_NO_INSTALL_CLEANUP"
-        echo "Update homebrew"
-        brew update-reset
-        brew tap homebrew/cask
-        for formula in git coreutils findutils p7zip yarn; do
-          brew install "$formula" || echo "$formula already installed"
-        done
-        brew cask style mps
-        brew cask audit mps
-        bash ./jetbrains-cask-bot.sh
+        npm install
+        node ./lib/has-update.js
+        
+#   updateCasks:
+#     runs-on: macOS-10.14
+#     env:
+#       HOMEBREW_COLOR: 1
+#       HOMEBREW_DEVELOPER: 1
+#       HOMEBREW_NO_AUTO_UPDATE: 1
+#       HOMEBREW_NO_INSTALL_CLEANUP: 1
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Install homebrew
+#       shell: bash
+#       run: |
+#         set -o errexit
+#         set -o pipefail
+#         echo "HOMEBREW_NO_AUTO_UPDATE: $HOMEBREW_NO_AUTO_UPDATE"
+#         echo "HOMEBREW_NO_INSTALL_CLEANUP: $HOMEBREW_NO_INSTALL_CLEANUP"
+#         echo "Update homebrew"
+#         brew update-reset
+#         brew tap homebrew/cask
+#         for formula in git coreutils findutils p7zip yarn; do
+#           brew install "$formula" || echo "$formula already installed"
+#         done
+#         brew cask style mps
+#         brew cask audit mps
+#         bash ./jetbrains-cask-bot.sh

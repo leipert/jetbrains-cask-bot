@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  schedule:
+    - cron: '13 * * * *'
+
+jobs:
+  build:
+    runs-on: macOS-10.14
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install homebrew
+      run: |
+        echo "Hello world"
+        brew --version

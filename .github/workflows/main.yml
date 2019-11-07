@@ -6,27 +6,41 @@ on: [push]
 
 jobs:
   check:
-    runs-on: linux
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/download-artifact@master
-      with:
-        name: previous-run
-    - uses: actions/setup-node@v1.1.0
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-    - id: checkIfUpdateIsNeeded
-      name: Check if update is needed
+    - name: npm install, build, and test
       run: |
-        npm install
-        node --version
+        npm ci
         node ./lib/has-update.js
-    - uses: actions/upload-artifact@master
-      with:
-        name: previous-run
-        path: ./previous.json
-
         
+# jobs:
+#   check:
+#     runs-on: linux
+#     steps:
+#     - uses: actions/checkout@v1
+#     - uses: actions/download-artifact@master
+#       with:
+#         name: previous-run
+#     - uses: actions/setup-node@v1.1.0
+#       with:
+#         node-version: '10.x'
+#     - id: checkIfUpdateIsNeeded
+#       name: Check if update is needed
+#       run: |
+#         npm install
+#         node --version
+#         node ./lib/has-update.js
+#     - uses: actions/upload-artifact@master
+#       with:
+#         name: previous-run
+#         path: ./previous.json
+# 
+#         
 #   updateCasks:
 #     runs-on: macOS-10.14
 #     env:

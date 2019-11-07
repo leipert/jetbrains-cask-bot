@@ -9,15 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/download-artifact@master
-      with:
-        name: previous-run
     - uses: actions/setup-node@v1.1.0
       with:
         node-version: '12.x'
+    - uses: actions/download-artifact@master
+      continue-on-error: true
+      with:
+        name: previous-run
     - id: checkIfUpdateIsNeeded
       name: Check if update is needed
       run: |
+        ls
+        cat .previous.json || echo "Previous file doesn't exist"
         yarn install
         node ./lib/has-update.js
     - uses: actions/upload-artifact@master

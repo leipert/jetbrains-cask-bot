@@ -1,13 +1,10 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
-inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
+name: 'Check if full run'
+description: |
+  The full pipeline runs a long time, with this we are going to check whether
+  we actually need to run a full pipeline.
 outputs:
-  time: # id of output
-    description: 'The time we we greeted you'
+  run_full: # id of output
+    description: 'Whether to run the full pipeline (boolean)'
 runs:
   using: 'node12'
   main: 'index.js'

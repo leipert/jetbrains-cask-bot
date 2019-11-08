@@ -14,12 +14,12 @@ jobs:
         with:
           name: previous-run
       - uses: ./.github/check-if-full-run
-        with:
-          who-to-greet: 'Mona the Octocat'
-      - id: checkIfUpdateIsNeeded
-        name: Check if update is needed
+        id: checkIfFullRun
+      - name: Check if update is needed
         run: |
           ls -alth
+          cat ./previous.json
+          Triggering build: {{ toJson(steps.checkIfFullRun.outputs) }}
       - uses: actions/upload-artifact@master
         with:
           name: previous-run

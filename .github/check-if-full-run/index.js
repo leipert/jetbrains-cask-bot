@@ -1,32 +1,16 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
+const _ = require('lodash');
+const superagent = require('superagent');
+const fs = require('fs-extra');
+const path = require('path');
+const { allProducts } = require('./../../lib/shared');
+const { log, warn, error } = require('./../../lib/utils');
+const definitions = require('./../../assets/definitions');
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  console.log('Dirname:', __dirname);
-  console.log('PWD:', process.cwd());
+  core.setOutput('run_full', false);
 
-  const time = new Date().toTimeString();
-  core.setOutput('time', time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
-
-  const _ = require('lodash');
-  const superagent = require('superagent');
-  const fs = require('fs-extra');
-  const path = require('path');
-  const { allProducts } = require('./../../lib/shared');
-  const { log, warn, error } = require('./../../lib/utils');
-
-  const definitions = require('./../../assets/definitions');
-
-  const GITHUB_PATH = 'leipert/jetbrains-cask-bot';
-  const TRAVIS_ROOT = 'travis-ci.org';
-
-  const PREV_FILE = path.join(__dirname, '..', 'previous.json');
+  const PREV_FILE = path.join(__dirname, '..', '..', 'previous.json');
 
   const getPrevious = () => {
     return fs.readJson(PREV_FILE).catch(err => err);
@@ -58,21 +42,6 @@ try {
       })
       .then(saveCurrent)
       .catch(err => err);
-  };
-
-  const triggerBuild = () => {
-    return superagent
-      .post(`https://api.${TRAVIS_ROOT}/repo/${encodeURIComponent(GITHUB_PATH)}/requests`)
-      .set('Accept', 'application/json')
-      .set('Travis-API-Version', '3')
-      .set('Authorization', `token ${process.env.TRAVIS_API_TOKEN}`)
-      .send({ request: { branch: 'master' } })
-      .then(() => {
-        log(`
-      Successfully triggered build on travis CI:
-      See: https://${TRAVIS_ROOT}/${GITHUB_PATH}/builds
-      `);
-      });
   };
 
   const lastReleaseDate = product =>
@@ -138,7 +107,7 @@ try {
     .then(shouldTrigger => {
       if (shouldTrigger) {
         warn('Triggering build');
-        return triggerBuild();
+        return core.setOutput('run_full', true);
       }
       log('A build was not triggered');
     })

@@ -6,8 +6,8 @@
   "author": "Lukas Eipert <git@leipert.io>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/rest": "^16.28.8",
-    "bluebird": "^3.5.5",
+    "@octokit/rest": "^16.34.1",
+    "bluebird": "^3.7.1",
     "chalk": "^2.4.2",
     "child-process-promise": "^2.2.0",
     "fs-extra": "^8.1.0",
@@ -16,9 +16,9 @@
   },
   "private": true,
   "devDependencies": {
-    "husky": "^3.0.5",
+    "husky": "^3.0.9",
     "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1"
+    "pretty-quick": "^2.0.1"
   },
   "scripts": {
     "generate-readme": "node lib/update-readme.js && prettier README.md --write",

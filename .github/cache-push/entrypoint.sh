@@ -45,9 +45,10 @@ ADD $INPUT_CACHE_PATH /cache/
 
 EOL
 
+cat ${TMP_FILE}
 
 # Build The Container
-docker build --build-arg INPUT_CACHE_PATH -t ${BASE_NAME} -f ${TMP_FILE} ${INPUT_BUILD_CONTEXT}
+docker build --build-arg INPUT_CACHE_PATH -t ${BASE_NAME} -f ${TMP_FILE} .
 
 rm -f ${TMP_FILE}
 

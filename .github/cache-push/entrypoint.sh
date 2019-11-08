@@ -23,6 +23,8 @@ if [[ -z "$INPUT_CACHE_PATH" ]]; then
 fi
 
 # The following environment variables will be provided by the environment automatically: GITHUB_REPOSITORY, GITHUB_SHA
+env
+ls
 
 # send credentials through stdin (it is more secure)
 echo ${INPUT_PASSWORD} | docker login -u ${INPUT_USERNAME} --password-stdin docker.pkg.github.com
@@ -30,13 +32,27 @@ echo ${INPUT_PASSWORD} | docker login -u ${INPUT_USERNAME} --password-stdin dock
 # Set Local Variables
 BASE_NAME="docker.pkg.github.com/${GITHUB_REPOSITORY}/cache:latest"
 
+TMP_FILE="/tmp/Dockerfile"
+
+cat > ${TMP_FILE} << EOL
+FROM scratch
+
+ARG INPUT_CACHE_PATH
+
+RUN mkdir /cache
+
+ADD $INPUT_CACHE_PATH /cache/
+
+EOL
+
+
 # Build The Container
-docker build -t ${BASE_NAME} -f ${INPUT_DOCKERFILE_PATH} ${INPUT_BUILD_CONTEXT}
+docker build --build-arg INPUT_CACHE_PATH -t ${BASE_NAME} -f ${TMP_FILE} ${INPUT_BUILD_CONTEXT}
+
+rm -f ${TMP_FILE}
 
 # Push cache image
 docker push ${BASE_NAME}
-
-env
 
 echo "::set-output name=IMAGE_URL::${BASE_NAME}"
 

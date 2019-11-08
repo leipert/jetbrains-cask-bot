@@ -1,0 +1,10 @@
+## Source files
+*.md
+*.map
+*.ts
+*.min.js
+
+### Reducing code size:
+lodash/*
+!lodash/lodash.js
+!lodash/package.json

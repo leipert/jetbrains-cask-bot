@@ -7,5 +7,8 @@
   "author": "Lukas Eipert <git@leipert.io>",
   "license": "MIT",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "lodash": "^4.17.15"
+  }
 }

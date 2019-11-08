@@ -4,9 +4,10 @@ logs
 npm-debug.log*
 yarn-error.log
 
+node_modules/
+!.github/check-if-full-run/node_modules
+.yarn-integrity
 
 env.sh
-.bin/
-bin/
 
 tmp/*

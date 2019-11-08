@@ -1,7 +1,9 @@
-const core = require('@actions/core');
-const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
+
+const core = require('@actions/core');
+const _ = require('lodash');
+
 const { allProducts } = require('./../../lib/shared');
 const definitions = require('./../../assets/definitions');
 
@@ -132,5 +134,6 @@ async function main() {
 }
 
 main().catch(e => {
+  console.warn(e);
   core.setFailed(e.message);
 });

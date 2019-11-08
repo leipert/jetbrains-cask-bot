@@ -1,8 +1,9 @@
 name: JetBrains Cask Bot
 
-on: [push]
-#  schedule:
-#    - cron: '13 * * * *'
+on:
+  - push
+  - schedule:
+    - cron: '13 * * * *'
 
 jobs:
   check:
@@ -14,7 +15,6 @@ jobs:
       HOMEBREW_NO_INSTALL_CLEANUP: 1
     steps:
       - uses: actions/checkout@v1
-        -
       - name: Cache previous.json
         uses: actions/cache@v1
         with:

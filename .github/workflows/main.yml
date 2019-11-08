@@ -18,10 +18,9 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ./previous.json
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/previous.json') }}
+          key: ${{ runner.OS }}-build
           restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-build
             ${{ runner.OS }}-
       - uses: ./.github/check-if-full-run
         id: checkIfFullRun

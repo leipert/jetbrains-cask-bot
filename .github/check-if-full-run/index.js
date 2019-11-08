@@ -88,11 +88,13 @@ Promise.all([getPrevious(), getCurrent()])
   .then(([previous, current]) => {
     if (_.isError(current)) {
       warn('Could not retrieve current jetbrains data');
+      warn(current.message);
       return false;
     }
 
     if (_.isError(previous)) {
       warn('Could not retrieve previous jetbrains data');
+      warn(previous.message);
       return true;
     }
 

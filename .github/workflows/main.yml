@@ -21,11 +21,8 @@ jobs:
       - name: Cache previous.json
         uses: actions/cache@v1
         with:
-          path: ./previous.json
-          key: ${{ runner.OS }}-build
-          restore-keys: |
-            ${{ runner.OS }}-build
-            ${{ runner.OS }}-
+          path: .tmp/
+          key: jcbot
       - uses: ./.github/check-if-full-run
         id: checkIfFullRun
       - uses: actions/checkout@v1

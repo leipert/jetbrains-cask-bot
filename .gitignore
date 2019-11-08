@@ -4,7 +4,10 @@ logs
 npm-debug.log*
 yarn-error.log
 
-previous.json
+
 env.sh
 .bin/
 bin/
+
+.tmp/*
+!.tmp/.gitkeep

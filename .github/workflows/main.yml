@@ -25,17 +25,9 @@ jobs:
         with:
           path: tmp
           key: jcbot-v2
-      - name: two
-        run: |
-          pwd
-          ls -alth tmp || echo "No tmp"
       - uses: ./.github/check-if-full-run
         name: Check if update is necessary
         id: checkIfFullRun
-      - name: Three
-        run: |
-          pwd
-          ls -alth tmp
       - name: Run Update mechanism
         if: steps.checkIfFullRun.outputs.run_full == 'yes'
         env:

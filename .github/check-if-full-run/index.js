@@ -16,7 +16,6 @@ const getPrevious = () => {
 };
 
 const saveCurrent = async currentData => {
-
   await fs.ensureDir(TMP_DIR);
 
   await fs.writeJson(PREV_FILE, currentData);
@@ -38,13 +37,13 @@ const getAllProducts = async () => {
 
 const getCurrent = async () => {
   try {
-    let allDefinitions = await getAllProducts();
     const jetbrainsCodes = definitions.map(x => x.jetbrainsCode);
 
-    let currentData = allDefinitions.filter(product => jetbrainsCodes.includes(product.code));
+    const allDefinitions = await getAllProducts();
+
+    const currentData = allDefinitions.filter(product => jetbrainsCodes.includes(product.code));
 
     return saveCurrent(currentData);
-
   } catch (err) {
     return err;
   }
@@ -57,70 +56,62 @@ const lastReleaseDate = product =>
     .get('date', '1970-01-01')
     .value();
 
-const searchForUnknownProjects = () => {
-  return getAllProducts().then(allDefinitions => {
-    const jetbrainsCodes = definitions.map(x => x.jetbrainsCode);
+const searchForUnknownProjects = async () => {
+  let allDefinitions = await getAllProducts();
 
-    const missingCasks = allDefinitions
-      .filter(
-        product =>
-          !jetbrainsCodes.includes(product.code) &&
-          _.get(product, 'distributions.mac', false) &&
-          lastReleaseDate(product) > '2018-12-11'
-      )
-      .map(product => {
-        const lastDownload = _.chain(product)
-          .get('releases', [])
-          .last()
-          .get('downloads.mac.link')
-          .value();
-        if (!lastDownload) {
-          return `${product.name} (${product.code}) has no downloadLink for MAC:
+  const jetbrainsCodes = definitions.map(x => x.jetbrainsCode);
+
+  const missingCasks = allDefinitions
+    .filter(
+      product =>
+        !jetbrainsCodes.includes(product.code) &&
+        _.get(product, 'distributions.mac', false) &&
+        lastReleaseDate(product) > '2018-12-11'
+    )
+    .map(product => {
+      const lastDownload = _.chain(product)
+        .get('releases', [])
+        .last()
+        .get('downloads.mac.link')
+        .value();
+      if (!lastDownload) {
+        return `${product.name} (${product.code}) has no downloadLink for MAC:
           ${JSON.stringify(product, null, 2)}`;
-        }
-        return `Missing cask (${product.code}): ${product.name} (${product.link})
+      }
+      return `Missing cask (${product.code}): ${product.name} (${product.link})
     \t\tLast release: ${lastReleaseDate(product)}, ${lastDownload}`;
-      });
-
-    if (missingCasks.length > 0) {
-      throw new Error(`
+    });
+  if (missingCasks.length > 0) {
+    throw new Error(`
       Found unknown casks:
       \t${missingCasks.join('\n\t')}
     `);
-    }
-  });
+  }
 };
 
-Promise.all([getPrevious(), getCurrent()])
-  .then(([previous, current]) => {
-    if (_.isError(current)) {
-      core.warning('Could not retrieve current jetbrains data');
-      core.warning(current.message);
-      return false;
-    }
+async function main() {
+  const [previous, current] = await Promise.all([getPrevious(), getCurrent()]);
+  if (_.isError(current)) {
+    core.warning('Could not retrieve current jetbrains data');
+    core.warning(current.message);
+  }
+  if (_.isError(previous)) {
+    core.warning('Could not retrieve previous jetbrains data');
+    core.warning(previous.message);
+  }
+  if (_.isEqual(previous, current)) {
+    core.warning('JetBrains has released no new versions');
+  }
+  let shouldTrigger = true;
+  if (shouldTrigger) {
+    core.warning('Triggering build');
+    core.setOutput('run_full', 'yes');
+  }
+  core.warning('A build was not triggered');
+  await searchForUnknownProjects();
+  return process.exit(0);
+}
 
-    if (_.isError(previous)) {
-      core.warning('Could not retrieve previous jetbrains data');
-      core.warning(previous.message);
-      return true;
-    }
-
-    if (_.isEqual(previous, current)) {
-      core.warning('JetBrains has released no new versions');
-      return false;
-    }
-
-    return true;
-  })
-  .then(shouldTrigger => {
-    if (shouldTrigger) {
-      core.warning('Triggering build');
-      return core.setOutput('run_full', 'yes');
-    }
-    core.warning('A build was not triggered');
-  })
-  .then(() => searchForUnknownProjects())
-  .then(() => process.exit(0))
-  .catch(e => {
-    core.setFailed(e.message);
-  });
+main().catch(e => {
+  core.setFailed(e.message);
+});

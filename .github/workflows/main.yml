@@ -6,29 +6,26 @@ on: [push]
 
 jobs:
   check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: ./.github/cache-pull
-        with:
-          username: leipert
-          password: ${{ secrets.GITHUB_DOCKER_REGISTRY }}
-      - uses: ./.github/check-if-full-run
-        id: checkIfFullRun
-      - uses: ./.github/cache-push
-        with:
-          username: leipert
-          password: ${{ secrets.GITHUB_DOCKER_REGISTRY }}
-          cache_path: ./previous.json
-  run:
     runs-on: macOS-10.14
-    needs: [check]
     env:
       HOMEBREW_COLOR: 1
       HOMEBREW_DEVELOPER: 1
       HOMEBREW_NO_AUTO_UPDATE: 1
       HOMEBREW_NO_INSTALL_CLEANUP: 1
     steps:
+      - uses: actions/checkout@v1
+        -
+      - name: Cache previous.json
+        uses: actions/cache@v1
+        with:
+          path: ./previous.json
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/previous.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-${{ env.cache-name }}-
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+      - uses: ./.github/check-if-full-run
+        id: checkIfFullRun
       - uses: actions/checkout@v1
         if: steps.checkIfFullRun.outputs.run_full == 'yes'
       - name: Update Casks if neccessary

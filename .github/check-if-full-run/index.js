@@ -8,31 +8,32 @@ const definitions = require('./../../assets/definitions');
 
 core.setOutput('run_full', 'no');
 
-const PREV_FILE = path.join(process.cwd(), '.tmp', 'previous.json');
-
-console.warn(process.cwd())
-console.warn(process.env)
-console.warn(__dirname)
+const TMP_DIR = path.join(process.cwd(), '.tmp');
+const PREV_FILE = path.join(TMP_DIR, 'previous.json');
 
 const getPrevious = () => {
   return fs.readJson(PREV_FILE).catch(err => err);
 };
 
-const saveCurrent = currentData => {
-  return fs.writeJson(PREV_FILE, currentData).then(() => currentData);
+const saveCurrent = async currentData => {
+
+  await fs.ensureDir(TMP_DIR);
+
+  await fs.writeJson(PREV_FILE, currentData);
+
+  return currentData;
 };
 
 let all = null;
 
-const getAllProducts = () => {
+const getAllProducts = async () => {
   if (all) {
-    return Promise.resolve(all);
+    return all;
   }
 
-  return allProducts().then(products => {
-    all = products;
-    return products;
-  });
+  all = await allProducts();
+
+  return all;
 };
 
 const getCurrent = () => {

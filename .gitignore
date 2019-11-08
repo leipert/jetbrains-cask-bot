@@ -10,4 +10,3 @@ env.sh
 bin/
 
 .tmp/*
-!.tmp/.gitkeep

@@ -27,12 +27,12 @@ jobs:
         id: cache
         name: Cache previous.json
         with:
-          path: .tmp/
+          path: .tmp
           key: jcbot
       - name: two
         run: |
           pwd
-          ls -alth .tmp/
+          ls -alth .tmp
       - uses: ./.github/check-if-full-run
         if: steps.cache.outputs.cache-hit == 'true'
         name: Check if update is necessary
@@ -40,7 +40,7 @@ jobs:
       - name: Three
         run: |
           pwd
-          ls -alth .tmp/
+          ls -alth .tmp
       - name: Run Update mechanism
         if: steps.checkIfFullRun.outputs.run_full == 'yes' || steps.cache.outputs.cache-hit != 'true'
         env:

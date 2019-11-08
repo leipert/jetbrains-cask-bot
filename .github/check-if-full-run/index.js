@@ -74,6 +74,7 @@ const searchForUnknownProjects = async () => {
         .last()
         .get('downloads.mac.link')
         .value();
+
       if (!lastDownload) {
         return `${product.name} (${product.code}) has no downloadLink for MAC:
           ${JSON.stringify(product, null, 2)}`;
@@ -81,6 +82,7 @@ const searchForUnknownProjects = async () => {
       return `Missing cask (${product.code}): ${product.name} (${product.link})
     \t\tLast release: ${lastReleaseDate(product)}, ${lastDownload}`;
     });
+
   if (missingCasks.length > 0) {
     throw new Error(`
       Found unknown casks:
@@ -91,24 +93,34 @@ const searchForUnknownProjects = async () => {
 
 async function main() {
   const [previous, current] = await Promise.all([getPrevious(), getCurrent()]);
+
+  let shouldTrigger = true;
+
   if (_.isError(current)) {
     core.warning('Could not retrieve current jetbrains data');
     core.warning(current.message);
+    shouldTrigger = false;
   }
+
   if (_.isError(previous)) {
     core.warning('Could not retrieve previous jetbrains data');
     core.warning(previous.message);
   }
+
   if (_.isEqual(previous, current)) {
     core.warning('JetBrains has released no new versions');
+    shouldTrigger = false;
   }
-  let shouldTrigger = true;
+
   if (shouldTrigger) {
     core.warning('Triggering build');
     core.setOutput('run_full', 'yes');
+  } else {
+    core.warning('A build was not triggered');
   }
-  core.warning('A build was not triggered');
+
   await searchForUnknownProjects();
+
   return process.exit(0);
 }
 

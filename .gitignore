@@ -2,8 +2,9 @@
 logs
 *.log
 npm-debug.log*
-node_modules
 yarn-error.log
 
 previous.json
 env.sh
+.bin/
+bin/

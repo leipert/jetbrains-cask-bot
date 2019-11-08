@@ -1,0 +1,77 @@
+# test directories
+__tests__
+test
+tests
+powered-test
+
+# asset directories
+docs
+doc
+website
+images
+assets
+*.gif
+
+# examples
+example
+examples
+
+# code coverage directories
+coverage
+.nyc_output
+
+# build scripts
+Makefile
+Gulpfile.js
+Gruntfile.js
+
+# configs
+appveyor.yml
+circle.yml
+codeship-services.yml
+codeship-steps.yml
+wercker.yml
+.tern-project
+.gitattributes
+.editorconfig
+.*ignore
+.eslintrc
+.jshintrc
+.flowconfig
+.documentup.json
+.yarn-metadata.json
+.travis.yml
+.github
+.eslintrc.json
+yarn.lock
+.prettierrc
+.istanbul.yml
+bower.json
+*.eslintrc
+*.babelrc
+.browserslistrc
+.zuul.yml
+
+# misc
+*.md
+*.markdown
+*.html
+*.bak
+*.bnf
+ChangeLog
+
+
+## Source files
+*.map
+*.js.flow
+*.ts
+*.min.js
+@types/
+types/
+
+### Reducing code size:
+lodash/*
+!lodash/lodash.js
+!lodash/package.json
+bluebird/js/browser
+superagent/dist

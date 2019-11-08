@@ -1,0 +1,22 @@
+name: 'jcbot-cache-push'
+description: Publish a cache image to the docker registry
+author: Lukas Eipert
+inputs:
+  password:
+    description: Your GitHub password corresponding to write access to the repo where this action is called.
+    required: true
+  username:
+    description: Your GitHub password corresponding to write access to the repo where this action is called.
+    require: true
+  cache_path:
+    description: the path in your repo that will serve as the build context
+    require: true
+outputs:
+  IMAGE_URL:
+    description: the URL where you can view the hosted image on GitHub.
+branding:
+  color: 'purple'
+  icon: 'layers'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

@@ -7,9 +7,5 @@
   "author": "Lukas Eipert <git@leipert.io>",
   "license": "MIT",
   "private": true,
-  "dependencies": {
-    "fs-extra": "^8.1.0",
-    "lodash": "^4.17.15",
-    "superagent": "^5.1.0"
-  }
+  "dependencies": {}
 }

@@ -18,16 +18,17 @@ if [[ -z "$INPUT_PASSWORD" ]]; then
 fi
 
 # The following environment variables will be provided by the environment automatically: GITHUB_REPOSITORY, GITHUB_SHA
-env
-ls
-
 # send credentials through stdin (it is more secure)
 echo ${INPUT_PASSWORD} | docker login -u ${INPUT_USERNAME} --password-stdin docker.pkg.github.com
 
 BASE_NAME="docker.pkg.github.com/${GITHUB_REPOSITORY}/cache:latest"
 
 # Pull cache image
-docker pull ${BASE_NAME} || echo "Cache image not found" && exit 0
+if sudo apt-get update ; then
+    sudo apt-get install pyrenamer
+fi
+
+docker pull ${BASE_NAME} || ( echo "Cache image not found" && exit 0 )
 
 ls
 

@@ -1,0 +1,10 @@
+name: 'Check if full run'
+description: |
+  The full pipeline runs a long time, with this we are going to check whether
+  we actually need to run a full pipeline.
+outputs:
+  run_full: # id of output
+    description: 'Whether to run the full pipeline (boolean)'
+runs:
+  using: 'node12'
+  main: 'index.js'

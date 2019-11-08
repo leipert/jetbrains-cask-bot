@@ -1,0 +1,14 @@
+{
+  "name": "check-if-full-run",
+  "version": "1.0.0",
+  "description": "Checks if a full run is necessary",
+  "main": "index.js",
+  "repository": "git+https://github.com/leipert/jetbrains-cask-bot.git",
+  "author": "Lukas Eipert <git@leipert.io>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "lodash": "^4.17.15"
+  }
+}

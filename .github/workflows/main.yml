@@ -16,9 +16,9 @@ jobs:
       - uses: ./.github/check-if-full-run
         id: checkIfFullRun
       - name: Check if update is needed
+        if: steps.checkIfFullRun.outputs.run_full == 'yes'
         run: |
           ls -alth
-          Triggering build: {{ toJson(steps.checkIfFullRun.outputs) }}
       - uses: actions/upload-artifact@master
         with:
           name: previous-run

@@ -17,7 +17,7 @@ This is a small tool which helps creating pull requests for [casks][casks] of je
     4.  create and commit branch
     5.  create PR
 
-This algorithm is runs on [Travis CI][travis]. Builds are triggered via [GitLab CI][gitlabci], as it allows scheduling more frequently.
+This algorithm is runs on [GitHub Actions][gha]. The workflow definition can be found [here][wfd].
 
 ## Watched jetbrains products
 
@@ -57,5 +57,5 @@ bash ./jetbrains-cask-bot.sh
 ```
 
 [casks]: https://github.com/caskroom/homebrew-cask
-[travis]: https://travis-ci.org/leipert/jetbrains-cask-bot/builds
-[gitlabci]: https://gitlab.com/leipert-projects/jetbrains-cask-bot/pipeline_schedules
+[gha]: https://github.com/leipert/jetbrains-cask-bot/actions
+[wfd]: https://github.com/leipert/jetbrains-cask-bot/blob/master/.github/workflows/main.yml

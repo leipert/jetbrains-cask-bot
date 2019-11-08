@@ -37,18 +37,14 @@ TMP_FILE="/tmp/Dockerfile"
 cat > ${TMP_FILE} << EOL
 FROM scratch
 
-ARG INPUT_CACHE_PATH
-
-RUN mkdir /cache
-
-ADD $INPUT_CACHE_PATH /cache/
+COPY $INPUT_CACHE_PATH /cache/
 
 EOL
 
 cat ${TMP_FILE}
 
 # Build The Container
-docker build --build-arg INPUT_CACHE_PATH -t ${BASE_NAME} -f ${TMP_FILE} .
+docker build -t ${BASE_NAME} -f ${TMP_FILE} .
 
 rm -f ${TMP_FILE}
 

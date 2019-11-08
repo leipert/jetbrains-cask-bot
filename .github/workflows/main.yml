@@ -1,15 +1,18 @@
-name: CI
+name: JetBrains Cask Bot
 
-on: [push]
-#  schedule:
-#    - cron: '13 * * * *'
+on:
+  push:
+    branches: '**'
+  schedule:
+    - cron: '*/30 * * * *'
 
 jobs:
-  build:
+  beepboop:
     runs-on: macOS-10.14
     steps:
     - uses: actions/checkout@v1
-    - name: Install homebrew
+      name: Checking out the latest version
+    - name: Run the bot
       run: |
         echo "Hello world"
         brew --version

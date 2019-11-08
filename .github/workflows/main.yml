@@ -26,7 +26,7 @@ jobs:
           path: .tmp/
           key: jcbot
       - uses: ./.github/check-if-full-run
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit == 'true'
         name: Check if update is necessary
         id: checkIfFullRun
       - name: Run Update mechanism

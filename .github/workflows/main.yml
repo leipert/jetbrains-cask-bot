@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/download-artifact@master
-        continue-on-error: true
+      - uses: ./.github/cache-pull
         with:
-          name: previous-run
+          username: leipert
+          password: ${{ secrets.GITHUB_DOCKER_REGISTRY }}
       - uses: ./.github/check-if-full-run
         id: checkIfFullRun
       - uses: ./.github/cache-push

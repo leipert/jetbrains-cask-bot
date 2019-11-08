@@ -22,7 +22,7 @@ jobs:
           cache_path: ./previous.json
   run:
     runs-on: macOS-10.14
-    if: steps.checkIfFullRun.outputs.run_full == 'yes'
+    needs: [check]
     env:
       HOMEBREW_COLOR: 1
       HOMEBREW_DEVELOPER: 1
@@ -30,7 +30,9 @@ jobs:
       HOMEBREW_NO_INSTALL_CLEANUP: 1
     steps:
       - uses: actions/checkout@v1
+        if: steps.checkIfFullRun.outputs.run_full == 'yes'
       - name: Update Casks if neccessary
+        if: steps.checkIfFullRun.outputs.run_full == 'yes'
         env:
           GIT_AUTHOR_EMAIL: jcb@leipert.io
           GIT_AUTHOR_NAME: jcbot

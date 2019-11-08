@@ -26,6 +26,16 @@ jobs:
           path: ./previous.json
       - name: Update Casks if neccessary
         if: steps.checkIfFullRun.outputs.run_full == 'yes'
+        env:
+          GIT_AUTHOR_EMAIL: jcb@leipert.io
+          GIT_AUTHOR_NAME: jcbot
+          GIT_COMMITTER_EMAIL: jcb@leipert.io
+          GIT_COMMITTER_NAME: jcbot
+          JCB_GITHUB_API_TOKEN: { { secrets.GITHUB_API_TOKEN } }
+          JCB_PULLREQUEST_CC: '/cc @leipert'
+          JCB_SOURCE_FORK_OWNER: leipert
+          JCB_TARGET_OWNER: Homebrew
+          JCB_TARGET_REPO: homebrew-cask
         shell: bash
         run: |
           set -o errexit

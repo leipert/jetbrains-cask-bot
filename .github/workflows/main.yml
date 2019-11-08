@@ -1,8 +1,12 @@
 name: JetBrains Cask Bot
 
-on: [push]
-#  schedule:
-#    - cron: '13 * * * *'
+on:
+  push:
+    branches:
+      - master
+      - '**'
+  schedule:
+    - cron: '13 * * * *'
 
 jobs:
   check:

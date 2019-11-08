@@ -9,4 +9,4 @@ env.sh
 .bin/
 bin/
 
-.tmp/*
+tmp/*

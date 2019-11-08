@@ -8,7 +8,7 @@ const definitions = require('./../../assets/definitions');
 
 core.setOutput('run_full', 'no');
 
-const TMP_DIR = path.join(process.cwd(), '.tmp');
+const TMP_DIR = path.join(process.cwd(), 'tmp');
 const PREV_FILE = path.join(TMP_DIR, 'previous.json');
 
 const getPrevious = () => {

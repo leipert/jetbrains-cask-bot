@@ -31,7 +31,7 @@ jobs:
           GIT_AUTHOR_NAME: jcbot
           GIT_COMMITTER_EMAIL: jcb@leipert.io
           GIT_COMMITTER_NAME: jcbot
-          JCB_GITHUB_API_TOKEN: { { secrets.GITHUB_API_TOKEN } }
+          JCB_GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
           JCB_PULLREQUEST_CC: '/cc @leipert'
           JCB_SOURCE_FORK_OWNER: leipert
           JCB_TARGET_OWNER: Homebrew

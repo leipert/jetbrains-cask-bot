@@ -1,7 +1,6 @@
 const core = require('@actions/core');
 const _ = require('lodash');
-const superagent = require('superagent');
-const fs = require('fs-extra');
+const fs = require('fs');
 const path = require('path');
 const { allProducts } = require('./../../lib/shared');
 const definitions = require('./../../assets/definitions');
@@ -11,14 +10,22 @@ core.setOutput('run_full', 'no');
 const TMP_DIR = path.join(process.cwd(), 'tmp');
 const PREV_FILE = path.join(TMP_DIR, 'previous.json');
 
-const getPrevious = () => {
-  return fs.readJson(PREV_FILE).catch(err => err);
+const getPrevious = async () => {
+  try {
+    const json = fs.readFileSync(PREV_FILE, 'utf8');
+
+    return JSON.parse(json);
+  } catch (err) {
+    return err;
+  }
 };
 
 const saveCurrent = async currentData => {
-  await fs.ensureDir(TMP_DIR);
+  if (!fs.existsSync(TMP_DIR)) {
+    fs.mkdirSync(TMP_DIR);
+  }
 
-  await fs.writeJson(PREV_FILE, currentData);
+  fs.writeFileSync(PREV_FILE, JSON.stringify(currentData, null, 2));
 
   return currentData;
 };

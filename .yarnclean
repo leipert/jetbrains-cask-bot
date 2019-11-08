@@ -65,9 +65,9 @@ ChangeLog
 *.map
 *.js.flow
 *.ts
+*.ts.template
 *.min.js
 @types/
-types/
 
 ### Reducing code size:
 lodash/*

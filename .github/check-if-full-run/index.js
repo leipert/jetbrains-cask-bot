@@ -36,15 +36,18 @@ const getAllProducts = async () => {
   return all;
 };
 
-const getCurrent = () => {
-  return getAllProducts()
-    .then(allDefinitions => {
-      const jetbrainsCodes = definitions.map(x => x.jetbrainsCode);
+const getCurrent = async () => {
+  try {
+    let allDefinitions = await getAllProducts();
+    const jetbrainsCodes = definitions.map(x => x.jetbrainsCode);
 
-      return allDefinitions.filter(product => jetbrainsCodes.includes(product.code));
-    })
-    .then(saveCurrent)
-    .catch(err => err);
+    let currentData = allDefinitions.filter(product => jetbrainsCodes.includes(product.code));
+
+    return saveCurrent(currentData);
+
+  } catch (err) {
+    return err;
+  }
 };
 
 const lastReleaseDate = product =>

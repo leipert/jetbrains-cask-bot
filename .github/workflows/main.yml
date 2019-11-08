@@ -24,17 +24,12 @@ jobs:
         with:
           path: .tmp/
           key: jcbot
-      - name: Meh
-        run: |
-          ls -alth .tmp/
       - uses: ./.github/check-if-full-run
+        if: steps.cache.outputs.cache-hit != 'true'
         name: Check if update is necessary
         id: checkIfFullRun
-      - name: Meh 2
-        run: |
-          ls -alth .tmp/
       - name: Run Update mechanism
-        if: steps.checkIfFullRun.outputs.run_full == 'yes'
+        if: steps.checkIfFullRun.outputs.run_full == 'yes' || steps.cache.outputs.cache-hit != 'true'
         env:
           GIT_AUTHOR_EMAIL: jcb@leipert.io
           GIT_AUTHOR_NAME: jcbot

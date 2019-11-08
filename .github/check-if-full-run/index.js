@@ -4,12 +4,15 @@ const superagent = require('superagent');
 const fs = require('fs-extra');
 const path = require('path');
 const { allProducts } = require('./../../lib/shared');
-const { log, warn, error } = require('./../../lib/utils');
 const definitions = require('./../../assets/definitions');
 
 core.setOutput('run_full', 'no');
 
 const PREV_FILE = path.join(process.cwd(), '.tmp', 'previous.json');
+
+console.warn(process.cwd())
+console.warn(process.env)
+console.warn(__dirname)
 
 const getPrevious = () => {
   return fs.readJson(PREV_FILE).catch(err => err);
@@ -87,19 +90,19 @@ const searchForUnknownProjects = () => {
 Promise.all([getPrevious(), getCurrent()])
   .then(([previous, current]) => {
     if (_.isError(current)) {
-      warn('Could not retrieve current jetbrains data');
-      warn(current.message);
+      core.warning('Could not retrieve current jetbrains data');
+      core.warning(current.message);
       return false;
     }
 
     if (_.isError(previous)) {
-      warn('Could not retrieve previous jetbrains data');
-      warn(previous.message);
+      core.warning('Could not retrieve previous jetbrains data');
+      core.warning(previous.message);
       return true;
     }
 
     if (_.isEqual(previous, current)) {
-      warn('JetBrains has released no new versions');
+      core.warning('JetBrains has released no new versions');
       return false;
     }
 
@@ -107,10 +110,10 @@ Promise.all([getPrevious(), getCurrent()])
   })
   .then(shouldTrigger => {
     if (shouldTrigger) {
-      warn('Triggering build');
+      core.warning('Triggering build');
       return core.setOutput('run_full', 'yes');
     }
-    log('A build was not triggered');
+    core.warning('A build was not triggered');
   })
   .then(() => searchForUnknownProjects())
   .then(() => process.exit(0))

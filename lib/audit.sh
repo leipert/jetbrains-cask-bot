@@ -5,7 +5,7 @@ set -eu; export FS=$'\n\t'
 cask=$1
 
 echo "Linting cask ${cask}"
-brew cask style --fix "${cask}"
+# brew cask style --fix "${cask}"
 echo "Check checksum of ${cask}"
 brew cask audit --download "${cask}"
 

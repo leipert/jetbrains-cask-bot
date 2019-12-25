@@ -17,12 +17,21 @@ appname=$(brew cask info "${cask}" | grep "(App)" | grep -oE ".+\.app")
 
 echo "Checking if cask ${cask} contains an app named '${appname}' (${location})"
 
-if 7z l "${location}" | grep -q "/${appname}/Contents" ; then
-	echo "Cask ${cask} contains ${appname}"
-elif 7z l "${location}" | grep -q ".hfs"; then
-  echo "Cask ${cask} seems to be hfs dmg image"
-else
-  echo "ERROR: Cask ${cask} does not contain ${appname}"
-  7z l "${location}"
-	exit 1
+echo "Mounting ${location}"
+line=$(hdiutil attach "${location}" | grep "/Volumes/")
+
+disk=$(echo $line | cut -f1 -d " ")
+volume=$(echo $line | cut -f3 -d " ")
+
+function unmount {
+  hdiutil detach "$1" || echo "Could not unmount"
+}
+
+if [ -d "${volume}/${appname}" ]; then
+  echo "Cask ${cask} contains ${appname}"
+  unmount "${disk}"
+else 
+  echo "Cask ${cask} doesn't contain ${appname}"
+  unmount "${disk}"
+  exit 1
 fi

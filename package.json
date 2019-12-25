@@ -9,7 +9,6 @@
     "@octokit/rest": "^16.36.0",
     "bluebird": "^3.7.2",
     "chalk": "^3.0.0",
-    "child-process-promise": "^2.2.0",
     "lodash": "^4.17.15",
     "superagent": "^5.1.3"
   },

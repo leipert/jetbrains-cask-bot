@@ -19,6 +19,8 @@ echo "Checking if cask ${cask} contains an app named '${appname}' (${location})"
 
 if 7z l "${location}" | grep -q "/${appname}/Contents" ; then
 	echo "Cask ${cask} contains ${appname}"
+elif 7z l "${location}" | grep -q ".hfs"; then
+  echo "Cask ${cask} seems to be hfs dmg image"
 else
   echo "ERROR: Cask ${cask} does not contain ${appname}"
   7z l "${location}"

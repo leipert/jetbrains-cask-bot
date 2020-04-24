@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checking out the latest version
         uses: actions/checkout@v1
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1.0.0
       - name: Run Update mechanism
         shell: bash
         env:
@@ -34,7 +36,7 @@ jobs:
           set -o pipefail
           brew update-reset
           brew tap homebrew/cask
-          for formula in git coreutils findutils yarn; do
+          for formula in git coreutils findutils; do
             brew install "$formula" || echo "$formula already installed"
           done
           bash ./jetbrains-cask-bot.sh

@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checking out the latest version
         uses: actions/checkout@v1
-      - name: asdf_install
-        uses: asdf-vm/actions/install@v1.0.0
       - name: Run Update mechanism
         shell: bash
         env:

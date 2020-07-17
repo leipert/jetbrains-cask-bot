@@ -9,7 +9,7 @@
     "@octokit/rest": "^16.37.0",
     "bluebird": "^3.7.2",
     "chalk": "^3.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "superagent": "^5.2.1"
   },
   "private": true,

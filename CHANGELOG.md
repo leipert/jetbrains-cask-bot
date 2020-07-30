@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0] 2020-07-30
+
+### Breaking
+
+- Switched to GitHub Actions: #8, #9, #11, #16
+
+### Changed
+
+- Refactored code a lot: #14
+- Updated dependencies: #17, #12
+- Mount dmg in order to check it, more resilient: #13
+
+### Added
+
+- Support for asdf: #15
+
+### Fixed
+
+- Regex parsing of homebrew casks: #18
+
 ## [2.1.0] 2019-09-03
 
 ### Changed

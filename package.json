@@ -8,15 +8,15 @@
   "dependencies": {
     "@octokit/rest": "^16.37.0",
     "bluebird": "^3.7.2",
-    "chalk": "^3.0.0",
+    "chalk": "^4.1.0",
     "lodash": "^4.17.19",
-    "superagent": "^5.2.1"
+    "superagent": "^6.0.0"
   },
   "private": true,
   "devDependencies": {
     "husky": "^4.2.0",
-    "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
+    "prettier": "^2.1.1",
+    "pretty-quick": "^3.0.0"
   },
   "scripts": {
     "generate-readme": "node lib/update-readme.js && prettier README.md --write",

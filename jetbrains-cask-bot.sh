@@ -13,6 +13,9 @@ __DIRNAME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Switch to project root
 cd "${__DIRNAME}" || exit 1
 
+# Debug output:
+echo "Debug output: node $(node --version); yarn $(yarn --version)"
+
 # install dependencies
 yarn
 
@@ -21,6 +24,7 @@ brew update
 
 # read environment variables which contain git/github settings
 if [[ -f "./env.sh" ]]; then
+    # shellcheck disable=SC1091
     . "./env.sh"
 else
     echo "No env file found"
@@ -33,8 +37,6 @@ git remote remove jcb 2> /dev/null || echo "No remote of the name jcb exists"
 git remote add jcb \
     "https://${JCB_GITHUB_API_TOKEN}@github.com/${JCB_SOURCE_FORK_OWNER}/${JCB_TARGET_REPO}.git" > /dev/null 2>&1 \
     && echo "Added jcb remote"
-
-# Removing old branches (only keep latest branch)
 git fetch jcb
 
 # Switch to project root
@@ -43,6 +45,9 @@ cd "${__DIRNAME}" || exit 1
 # run the script
 echo -e "\\nRunning script\\n"
 node "./lib/update-casks.js"
+
+# Removing old branches (only keep latest branch)
+node "./lib/delete-old-branches.js"
 
 # Delete remote as it contains the API token
 cd "${CASK_DIR}"

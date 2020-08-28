@@ -34,7 +34,7 @@ jobs:
           set -o pipefail
           brew update-reset
           brew tap homebrew/cask
-          for formula in git coreutils findutils; do
+          for formula in git; do
             brew install "$formula" || echo "$formula already installed"
           done
           bash ./jetbrains-cask-bot.sh

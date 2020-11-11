@@ -34,6 +34,8 @@ This algorithm is runs on [GitHub Actions][gha]. The workflow definition can be 
 - phpstorm
 - pycharm
 - pycharm-ce
+- pycharm-with-anaconda-plugin
+- pycharm-ce-with-anaconda-plugin
 - pycharm-edu
 - rider
 - rubymine

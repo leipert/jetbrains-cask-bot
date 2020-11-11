@@ -66,6 +66,20 @@ const definitions = [
     releaseChannel: 'release',
   },
   {
+    caskName: 'pycharm-with-anaconda-plugin',
+    jetbrainsCode: 'PCP',
+    versionField: '<%= version %>,<%= build %>',
+    releaseChannel: 'release',
+    releaseType: 'macAnaconda',
+  },
+  {
+    caskName: 'pycharm-ce-with-anaconda-plugin',
+    jetbrainsCode: 'PCC',
+    versionField: '<%= version %>,<%= build %>',
+    releaseChannel: 'release',
+    releaseType: 'macAnaconda',
+  },
+  {
     caskName: 'pycharm-edu',
     jetbrainsCode: 'PCE',
     versionField: '<%= version %>,<%= build %>',

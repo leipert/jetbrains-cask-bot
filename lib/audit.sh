@@ -21,19 +21,19 @@ echo "Mounting ${location}"
 line=$(hdiutil attach "${location}" | grep "/Volumes/")
 
 disk=$(echo $line | cut -f1 -d " ")
-volume=$(echo $line | /usr/bin/grep -oE "/Volumes/.+")
+volume="$( cd "$(echo $line | /usr/bin/grep -oE "/Volumes/.+")"* && pwd )"
 
 function unmount {
   hdiutil detach "$1" || echo "Could not unmount"
 }
 
-echo "${volume}"
+echo "'${volume}'"
 ls "${volume}"
 
 if [ -d "${volume}/${appname}" ]; then
   echo "Cask ${cask} contains ${appname}"
   unmount "${disk}"
-else 
+else
   echo "Cask ${cask} doesn't contain ${appname}"
   unmount "${disk}"
   exit 1

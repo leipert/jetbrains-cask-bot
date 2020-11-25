@@ -5,15 +5,15 @@ set -eu; export FS=$'\n\t'
 cask=$1
 
 echo "Linting cask ${cask}"
-brew cask style --fix "${cask}"
+brew style --fix "${cask}"
 echo "Check checksum of ${cask}"
-brew cask audit --download "${cask}"
+brew audit --cask --online "${cask}"
 
 # find out where to the dmg is downloaded, it is prompted if I run audit twice
-location=$(brew cask audit --download "${cask}" | grep -oe '/Users.*.dmg')
+location=$(brew audit --cask --online "${cask}" | grep -oe '/Users.*.dmg')
 
 # get the appname (funnily it is sorrounded by brackets !?)
-appname=$(brew cask info "${cask}" | grep "(App)" | grep -oE ".+\.app")
+appname=$(brew info --cask "${cask}" | grep "(App)" | grep -oE ".+\.app")
 
 echo "Checking if cask ${cask} contains an app named '${appname}' (${location})"
 

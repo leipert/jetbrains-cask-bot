@@ -12,8 +12,8 @@ This is a small tool which helps creating pull requests for [casks][casks] of je
     For any outdated cask which has no open PR:
 
     1.  update version and sha256
-    2.  `brew cask style --fix "${cask}"`
-    3.  `brew cask audit --download "${cask}"`
+    2.  `brew style --cask --fix "${cask}"`
+    3.  `brew audit --cask --online "${cask}"`
     4.  create and commit branch
     5.  create PR
 

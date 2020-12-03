@@ -1,4 +1,4 @@
-name: JetBrains Cask Bot
+name: JetBrains Cask Bot - Update
 
 on:
   workflow_dispatch:
@@ -9,12 +9,48 @@ on:
     - cron: '30 */4 * * 6,0'
 
 jobs:
-  beepboop:
-    runs-on: macos-10.15
+  check_for_update:
+    name: Beepboop – check for update
+    runs-on: ubuntu-latest
+    outputs:
+      update-needed: ${{ steps.update-needed.outputs.update-needed }}
     steps:
       - name: Checking out the latest version
         uses: actions/checkout@v1
+      - name: Install dependencies
+        shell: bash
+        run: yarn install --frozen-lockfile
+      - id: update-needed
+        env:
+          JCB_GITHUB_API_TOKEN: ${{ secrets.JCB_GITHUB_API_TOKEN }}
+        uses: ./.github/actions/needs_update
+  update_casks:
+    name: Beepboop – execute update
+    needs: check_for_update
+    if: needs.check_for_update.outputs.update-needed == 'true'
+    runs-on: macos-10.15
+    env:
+      # Force vendored Ruby on Catalina: https://github.com/Homebrew/brew/issues/9410
+      HOMEBREW_FORCE_VENDOR_RUBY: 1
+    steps:
+      - name: Checking out the latest version
+        id: checkout
+        uses: actions/checkout@v1
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Cache Homebrew Bundler RubyGems
+        id: cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+      - name: Install Homebrew Bundler RubyGems
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: brew install-bundler-gems
       - name: Run Update mechanism
+        id: update
         shell: bash
         env:
           HOMEBREW_COLOR: 1

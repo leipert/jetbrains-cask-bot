@@ -1,0 +1,8 @@
+name: 'Check casks for update'
+description: 'Checks whether a cask needs an update'
+outputs:
+  update-needed: # id of output
+    description: 'Whether an update is needed'
+runs:
+  using: 'node12'
+  main: '../../../check-for-update.js'

@@ -10,10 +10,12 @@ on:
 
 jobs:
   beepboop:
-    runs-on: macos-latest
+    runs-on: macos-11.0
     steps:
       - name: Checking out the latest version
         uses: actions/checkout@v2
+      - name: Set up Xcode
+        run: sudo xcode-select --switch /Applications/Xcode_12.2.app/Contents/Developer
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master

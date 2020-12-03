@@ -13,7 +13,58 @@ jobs:
     runs-on: macos-10.15
     steps:
       - name: Checking out the latest version
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+        with:
+          test-bot: false
+      - name: Clean up CI machine
+        run: |
+          if ! brew list --cask visual-studio &>/dev/null; then
+            if ! rm -r '/Applications/Visual Studio.app'; then
+              echo '::warning::Removing Visual Studio is no longer necessary.'
+            fi
+          fi
+          if ! rm /usr/local/share/man/man1/al.1 || \
+             ! sudo rm /etc/paths.d/mono-commands || \
+             ! sudo rm -r /Library/Frameworks/Mono.framework || \
+             ! sudo pkgutil --forget com.xamarin.mono-MDK.pkg; then
+            echo '::warning::Uninstalling Mono is no longer necessary.'
+          fi
+          if ! rm /usr/local/bin/dotnet; then
+            echo '::warning::Removing `dotnet` symlink is no longer necessary.'
+          fi
+          if ! rm /usr/local/bin/pod; then
+            echo '::warning::Removing `cocoapods` symlink is no longer necessary.'
+          fi
+          if brew tap-info adoptopenjdk/openjdk; then
+            brew untap adoptopenjdk/openjdk
+          else
+            echo '::warning::Untapping adoptopenjdk/openjdk is no longer necessary.'
+          fi
+      # Workaround until the `cache` action uses the changes from
+      # https://github.com/actions/toolkit/pull/580.
+      - name: Unlink workspace
+        run: |
+          mv "${GITHUB_WORKSPACE}" "${GITHUB_WORKSPACE}-link"
+          mkdir "${GITHUB_WORKSPACE}"
+      - name: Cache Homebrew Gems
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+
+      # Workaround until the `cache` action uses the changes from
+      # https://github.com/actions/toolkit/pull/580.
+      - name: Re-link workspace
+        run: |
+          rmdir "${GITHUB_WORKSPACE}"
+          mv "${GITHUB_WORKSPACE}-link" "${GITHUB_WORKSPACE}"
+      - name: Install Homebrew Gems
+        id: gems
+        run: brew install-bundler-gems
       - name: Run Update mechanism
         shell: bash
         env:

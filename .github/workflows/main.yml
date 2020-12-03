@@ -10,7 +10,7 @@ on:
 
 jobs:
   beepboop:
-    runs-on: macos-10.15
+    runs-on: macos-latest
     steps:
       - name: Checking out the latest version
         uses: actions/checkout@v2

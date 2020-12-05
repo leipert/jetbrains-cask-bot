@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [4.0.0] 2020-12-05
+
+### Major rewrite
+
+Seems like Ruby/Homebrew [got somehow broken][borked], and while we had to touch the GitHub actions,
+there was a major refactor on how we do things:
+
+There are two workflows:
+
+1. One to cleanup the old branches, running weekly
+2. Main workflow which takes care of the update
+
+The main workflow now has been split into two jobs:
+
+1. Checking whether an update is needed. This is checking against the upstream homebrew-cask files via the GitHub API,
+   this means we do not need to run it on macos (so it should run faster)
+2. Executing the update, only when 1. succeeded, some old stuff on MacOS,
+   but now utilizing some setup scripts from the homebrew community
+
+[borked]: https://github.com/Homebrew/brew/issues/9410
+
 ## [3.2.0] 2020-11-11
 
 ### Added

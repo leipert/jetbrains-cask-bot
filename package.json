@@ -7,17 +7,17 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@octokit/rest": "^18.0.4",
+    "@octokit/rest": "^18.0.12",
     "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "lodash": "^4.17.19",
-    "superagent": "^6.0.0"
+    "superagent": "^6.1.0"
   },
   "private": true,
   "devDependencies": {
-    "husky": "^4.2.0",
-    "prettier": "^2.1.1",
-    "pretty-quick": "^3.0.0"
+    "husky": "^4.3.4",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
   },
   "scripts": {
     "generate-readme": "node lib/update-readme.js && prettier README.md --write",

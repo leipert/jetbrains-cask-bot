@@ -46,9 +46,6 @@ cd "${__DIRNAME}" || exit 1
 echo -e "\\nRunning script\\n"
 node "./lib/update-casks.js"
 
-# Removing old branches (only keep latest branch)
-node "./lib/delete-old-branches.js"
-
 # Delete remote as it contains the API token
 cd "${CASK_DIR}"
 git remote remove jcb 2> /dev/null || echo "No remote of the name jcb exists"

@@ -1,5 +1,5 @@
-const { octokit } = require('./shared');
-const { log, warn, error } = require('./utils');
+const { octokit } = require('./lib/shared');
+const { log, warn, error } = require('./lib/utils');
 
 const getExistingBranches = async () => {
   try {

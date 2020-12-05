@@ -27,7 +27,7 @@ jobs:
   update_casks:
     name: Beepboop – execute update
     needs: check_for_update
-    if: needs.check_for_update.outputs.update-needed == 'true'
+    if: needs.check_for_update.outputs.update-needed == 'true' || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: macos-10.15
     env:
       # Force vendored Ruby on Catalina: https://github.com/Homebrew/brew/issues/9410

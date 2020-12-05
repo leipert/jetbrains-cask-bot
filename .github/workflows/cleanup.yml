@@ -1,0 +1,28 @@
+name: JetBrains Cask Bot - Cleanup
+
+on:
+  workflow_dispatch:
+  push:
+    branches: '**'
+  schedule:
+    - cron: '23 13 * * 1'
+
+jobs:
+  delete_old_branches:
+    name: Beepboop – clean old branches..
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out the latest version
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        shell: bash
+        run: yarn install --frozen-lockfile
+      - name: Delete old branches
+        id: delete-branches
+        shell: bash
+        env:
+          JCB_GITHUB_API_TOKEN: ${{ secrets.JCB_GITHUB_API_TOKEN }}
+          JCB_SOURCE_FORK_OWNER: leipert
+          JCB_TARGET_OWNER: Homebrew
+          JCB_TARGET_REPO: homebrew-cask
+        run: node "./delete-old-branches.js"

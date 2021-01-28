@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: '**'
-  schedule:
-    - cron: '*/30 * * * 1-5'
-    - cron: '30 */4 * * 6,0'
+#   schedule:
+#     - cron: '*/30 * * * 1-5'
+#     - cron: '30 */4 * * 6,0'
 
 jobs:
   check_for_update:

@@ -6,7 +6,7 @@
   "author": "Lukas Eipert <git@leipert.io>",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@octokit/rest": "^18.0.12",
     "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
